@@ -1,7 +1,7 @@
 {
-  "name": "postcss-pxtorem",
-  "description": "A CSS post-processor that converts px to rem.",
-  "version": "1.0.0",
+  "name": "postcss-pxtorem-sssh",
+  "description": " A CSS post-processor that converts px to rem. 实验性质非最终产物请勿使用。Experimental properties are not final products do not use.  ",
+  "version": "1.0.1",
   "author": "sssh",
   "license": "MIT",
   "repository": {

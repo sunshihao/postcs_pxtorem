@@ -6,9 +6,10 @@ const defaults = {
   rootValue: 16,
   unitPrecision: 5,
   selectorBlackList: [],
-  propList: ["font", "font-size", "line-height", "letter-spacing"],
+  // propList: ["font", "font-size", "line-height", "letter-spacing"],
+  propList: ["*"],
   replace: true,
-  mediaQuery: false,
+  mediaQuery: false, // 媒体查询
   minPixelValue: 0,
   exclude: null
 };
@@ -117,15 +118,18 @@ function createPropListMatcher(propList) {
 }
 
 module.exports = (options = {}) => {
-  convertLegacyOptions(options);
+  convertLegacyOptions(options); // 整合数据 清除无用的数据
   const opts = Object.assign({}, defaults, options);
   const satisfyPropList = createPropListMatcher(opts.propList);
   const exclude = opts.exclude;
   let isExcludeFile = false;
   let pxReplace;
   return {
-    postcssPlugin: "postcss-pxtorem",
+    postcssPlugin: "postcss-pxtorem-sssh",
+    // 在root节点上调用一次
     Once(css) {
+      console.log("css---", css);
+
       const filePath = css.source.input.file;
       if (
         exclude &&
